@@ -11,6 +11,8 @@ File > Swift Packages > Add Package Dependency... (https://github.com/DonSwet/Ed
 
 ### Create an instance of `EditableColor`
 
+	import EditableColor
+	
 	// Start with component values
 	let color = EditableColor(red: 1, green: 0, blue: 0, alpha: 1, colorspace: .sRGB)
 	
@@ -19,7 +21,7 @@ File > Swift Packages > Add Package Dependency... (https://github.com/DonSwet/Ed
 
 ### SwiftUI - Display an `EditableColor`
 
-If you simply need to display an instance of `EditableColor` without any special requirements you may do so using the `EditableColor.Display` view type. 
+If you simply need to display an instance of `EditableColor` without any special requirements you may do so using the `EditableColor.Display` view type.
 
 	struct ContentView: some View {
 		var body: some View {
