@@ -18,7 +18,7 @@ If you simply need to display an instance of `EditableColor` without any special
 
 	struct ContentView: some View {
 		var body: some View {
-		// No need to retain the color using @ObservedObject if we wrap it inside of our custom Display type. Updates will occur automatically.
+			// No need to retain the color using @ObservedObject if we wrap it inside of our custom Display type. Updates will occur automatically.
 			EditableColor.Display(color)
 		}
 	}
