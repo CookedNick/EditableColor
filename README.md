@@ -2,6 +2,11 @@
 
 A mutable color representation that conforms to `ObservableObject` with automatic, dead-simple bridging to **SwiftUI**, **UIKit**, and **AppKit**.
 
+## Installation
+
+**In Xcode:**
+File > Swift Packages > Add Package Dependency... (https://github.com/DonSwet/EditableColor)
+
 ## Usage
 
 ### Create an instance of `EditableColor`
