@@ -14,25 +14,6 @@ public extension EditableColor.Component {
 	static func safeRandom() -> EditableColor.Component {
 		.random(in: 0...1)
 	}
-	
-	
-	/// Generates a `Text` instance that displays and styles a component value appropriately.
-	func text(displayMode: EditableColor.ComponentDisplayMode = .percent) -> Text {
-		let text: Text = {
-			var text = String(Int(self*displayMode.denominator))
-			if let suffix = displayMode.suffix {
-				text += suffix
-			}
-			return Text(text)
-		}()
-		
-		if self == 0 || self == 1 {
-			return text
-				.bold()
-		} else {
-			return text
-		}
-	}
 }
 
 @available(iOS 13.0, OSX 10.15, *)
@@ -67,21 +48,6 @@ public class EditableColor: NSObject, ObservableObject, Identifiable {
 	
 	public enum Colorspace: String {
 		case sRGB = "sRGB", P3 = "P3"
-	}
-	
-	public enum ComponentDisplayMode: Double {
-		case percent = 100, eightBit = 255, tenBit = 1023, sixteenBit = 65535
-		
-		public var denominator: Double { rawValue }
-		
-		public var suffix: String? {
-			switch self {
-			case .percent:
-				return "%"
-			default:
-				return nil
-			}
-		}
 	}
 	
 	public typealias Component = Double
