@@ -102,8 +102,6 @@ public class EditableColor: NSObject, ObservableObject, Identifiable {
 		
 		public var body: some View {
 			if showBackground {
-				return AnyView(Color(editableColor))
-			} else {
 				return AnyView(
 					Color.white
 						.overlay(GeometryReader { geometry in
@@ -115,6 +113,8 @@ public class EditableColor: NSObject, ObservableObject, Identifiable {
 								})
 						})
 						.overlay(Color(editableColor)))
+			} else {
+				return AnyView(Color(editableColor))
 			}
 		}
 	}
