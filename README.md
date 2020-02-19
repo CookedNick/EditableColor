@@ -5,7 +5,7 @@ A mutable color representation that conforms to `ObservableObject` with automati
 ## Installation
 
 **In Xcode:**
-File > Swift Packages > Add Package Dependency... (https://github.com/DonSwet/EditableColor)
+File > Swift Packages > Add Package Dependency... (https://github.com/DonSwet/EditableColor.git)
 
 ## Usage
 
