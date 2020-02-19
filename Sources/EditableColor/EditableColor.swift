@@ -101,6 +101,11 @@ public class EditableColor: NSObject, ObservableObject, Identifiable {
 		
 		
 		public var body: some View {
+			var animatedColor: some View {
+				Color(editableColor)
+					.animation(.interactiveSpring())
+			}
+			
 			if showBackground {
 				return AnyView(
 					Color.white
@@ -112,9 +117,9 @@ public class EditableColor: NSObject, ObservableObject, Identifiable {
 									path.addLine(to: CGPoint(x: 0, y: geometry.size.height))
 								})
 						})
-						.overlay(Color(editableColor)))
+						.overlay(animatedColor))
 			} else {
-				return AnyView(Color(editableColor))
+				return AnyView(animatedColor)
 			}
 		}
 	}
