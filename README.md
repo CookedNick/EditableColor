@@ -2,6 +2,8 @@
 
 A mutable color representation that conforms to `ObservableObject` with automatic, dead-simple bridging to **SwiftUI**, **UIKit**, and **AppKit**.
 
+This package contains complete model code necessary to roll your own color picker. Minimum SDK required: iOS 13/macOS 10.15 Catalina.
+
 ## Installation
 
 **In Xcode:**
