@@ -19,7 +19,7 @@ public extension EditableColor.Component {
 @available(iOS 13.0, OSX 10.15, *)
 public class EditableColor: NSObject, NSCopying, ObservableObject, Identifiable {
 	
-	public func identicalCopy -> EditableColor {
+	public var identicalCopy: EditableColor {
 		EditableColor(red: red, green: green, blue: blue, alpha: alpha, colorspace: colorspace)
 	}
 	
