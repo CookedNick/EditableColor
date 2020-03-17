@@ -56,9 +56,9 @@ public extension SwiftUI.Color {
 	init(_ color: EditableColor, ignoringAlpha: Bool = false) {
 		
 		#if os(iOS)
-		self.init(UIColor(color), ignoringAlpha: ignoringAlpha)
+		self.init(UIColor(color, ignoringAlpha: ignoringAlpha))
 		#elseif os(OSX)
-		self.init(NSColor(color), ignoringAlpha: ignoringAlpha)
+		self.init(NSColor(color, ignoringAlpha: ignoringAlpha))
 		#else
 		fatalError()
 		#endif
