@@ -12,18 +12,18 @@ import SwiftUI
 public extension UIColor {
 	
 	/// Initializes a `UIColor` using the data currently stored in an `EditableColor` instance. To display a changing color while it's being edited, create a new `UIColor` every time the values are modified. `EditableColor` conforms to `ObservableObject`, so there are appropriate `Combine` methods available to be notified from changes.
-	convenience init(_ color: EditableColor) {
+	convenience init(_ color: EditableColor, ignoringAlpha: Bool = false) {
 		switch color.colorspace {
 		case .sRGB:
 			self.init(red: CGFloat(color.red),
 					  green: CGFloat(color.green),
 					  blue: CGFloat(color.blue),
-					  alpha: CGFloat(color.alpha))
+					  alpha: ignoringAlpha ? 1 : CGFloat(color.alpha))
 		case .P3:
 			self.init(displayP3Red: CGFloat(color.red),
 					  green: CGFloat(color.green),
 					  blue: CGFloat(color.blue),
-					  alpha: CGFloat(color.alpha))
+					  alpha: ignoringAlpha ? 1 : CGFloat(color.alpha))
 		}
 	}
 }
@@ -32,18 +32,18 @@ public extension UIColor {
 public extension NSColor {
 	
 	/// Initializes an `NSColor` using the data currently stored in an `EditableColor` instance. To display a changing color while it's being edited, create a new `UIColor` every time the values are modified. `EditableColor` conforms to `ObservableObject`, so there are appropriate `Combine` methods available to be notified from changes.
-	convenience init(_ color: EditableColor) {
+	convenience init(_ color: EditableColor, ignoringAlpha: Bool = false) {
 		switch color.colorspace {
 		case .sRGB:
 			self.init(red: CGFloat(color.red),
 					  green: CGFloat(color.green),
 					  blue: CGFloat(color.blue),
-					  alpha: CGFloat(color.alpha))
+					  alpha: ignoringAlpha ? 1 : CGFloat(color.alpha))
 		case .P3:
 			self.init(displayP3Red: CGFloat(color.red),
 					  green: CGFloat(color.green),
 					  blue: CGFloat(color.blue),
-					  alpha: CGFloat(color.alpha))
+					  alpha: ignoringAlpha ? 1 : CGFloat(color.alpha))
 		}
 	}
 }
@@ -53,12 +53,12 @@ public extension NSColor {
 public extension SwiftUI.Color {
 	
 	/// Initializes a color using the data currently stored in an `EditableColor` instance. To display a changing color while it's being edited, store the `EditableColor` instance inside of an `@ObservedObject` property wrapper within the view that calls this initializer or one of its parents.
-	init(_ color: EditableColor) {
+	init(_ color: EditableColor, ignoringAlpha: Bool = false) {
 		
 		#if os(iOS)
-		self.init(UIColor(color))
+		self.init(UIColor(color), ignoringAlpha: ignoringAlpha)
 		#elseif os(OSX)
-		self.init(NSColor(color))
+		self.init(NSColor(color), ignoringAlpha: ignoringAlpha)
 		#else
 		fatalError()
 		#endif
