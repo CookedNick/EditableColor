@@ -72,25 +72,21 @@ public class EditableColor: NSObject, NSCopying, ObservableObject, Identifiable 
 		
 		
 		public var body: some View {
-			var animatedColor: some View {
-				Color(editableColor)
-					.animation(.interactiveSpring())
-			}
-			
-			if showBackground {
-				return AnyView(
-					Color.white
-						.overlay(GeometryReader { geometry in
-							Color.black
-								.clipShape(Path { path in
-									path.move(to: .zero)
-									path.addLine(to: CGPoint(x: geometry.size.width, y: 0))
-									path.addLine(to: CGPoint(x: 0, y: geometry.size.height))
-								})
-						})
-						.overlay(animatedColor))
-			} else {
-				return AnyView(animatedColor)
+			Group {
+				if showBackground {
+						Color.white
+							.overlay(GeometryReader { geometry in
+								Color.black
+									.clipShape(Path { path in
+										path.move(to: .zero)
+										path.addLine(to: CGPoint(x: geometry.size.width, y: 0))
+										path.addLine(to: CGPoint(x: 0, y: geometry.size.height))
+									})
+							})
+							.overlay(Color(editableColor))
+				} else {
+					Color(editableColor)
+				}
 			}
 		}
 	}
