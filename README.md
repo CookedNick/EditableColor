@@ -2,7 +2,9 @@
 
 A mutable color representation that conforms to `ObservableObject` with automatic, dead-simple bridging to **SwiftUI**, **UIKit**, and **AppKit**.
 
-This package contains complete model code necessary to roll your own color picker. Minimum SDK required: iOS 13/macOS 10.15 Catalina.
+This package contains all the model code necessary to roll your own color picker.
+
+**Minimum SDK**: *iOS 13* / *macOS 10.15 Catalina.*
 
 ## Installation
 
@@ -15,22 +17,14 @@ File > Swift Packages > Add Package Dependency... (https://github.com/DonSwet/Ed
 
 	import EditableColor
 	
-	// Start with component values
-	let color = EditableColor(red: 1, green: 0, blue: 0, alpha: 1, colorspace: .sRGB)
+	// Start with component values.
+	let color = EditableColor(red: 1, green: 1, blue: 1, alpha: 1, colorspace: .sRGB)
 	
-	// OR start with random values
+	// OR start with no values. Default: (red: 1, green: 1, blue: 1, alpha: 1, colorspace: .sRGB)
 	let color = EditableColor()
-
-### SwiftUI - Display an `EditableColor`
-
-If you simply need to display an instance of `EditableColor` without any special requirements you may do so using the `EditableColor.Display` view type.
-
-	struct ContentView: some View {
-		var body: some View {
-			// No need to retain the color using @ObservedObject if we wrap it inside of our custom Display type. Updates will occur automatically.
-			EditableColor.Display(color)
-		}
-	}
+	
+	// To change the default initializer arguments, you can edit this static proxy value.
+	EditableColor.defaultValues.red = 0
 
 ### SwiftUI - Using `EditableColor` in place of `Color`
 
@@ -47,8 +41,9 @@ If you need to use an `EditableColor` in the form of SwiftUI's native `Color` ty
 
 ### UIKit & AppKit
 
-This is a one-time-use bridge. A `UIColor` or `NSColor` instance generated from an `EditableColor` will **not** automatically display changes made to its original `EditableColor`. You'll have to watch for changes using the `Combine` framework methods on `EditableColor` and manually set the color on each update.
+This is a one-time-use bridge. A `UIColor` or `NSColor` instance generated from an `EditableColor` will **not** automatically display changes made to its original `EditableColor`. You'll have to replace it manually upon any changes.
 
+	let swiftuiColor = Color(color)
 	let uiColor = UIColor(color)
 	let nsColor = NSColor(color)
 
