@@ -8,7 +8,7 @@
 import SwiftUI
 
 #if os(iOS)
-@available(iOS 13.0, *)
+@available(iOS 10.0, *)
 public extension UIColor {
 	
 	/// Initializes a `UIColor` with values from an `EditableColor`.
@@ -28,7 +28,7 @@ public extension UIColor {
 	}
 }
 #elseif os(OSX)
-@available(OSX 10.15, *)
+@available(OSX 10.12, *)
 public extension NSColor {
 	
 	/// Initializes an `NSColor` with values from an `EditableColor`.

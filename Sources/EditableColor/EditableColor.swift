@@ -5,18 +5,15 @@
 //  Created by Nicolas Cook Leon on 2/18/20.
 //
 
-@available(iOS 13.0, OSX 10.15, *)
 public struct EditableColor: Equatable, Hashable {
 	
 	/// Initialize an `EditableColor` value. Default arguments are derived from `EditableColor.defaultValues`, which can be modified by users of this package.
 	public init(red: Component? = nil, green: Component? = nil, blue: Component? = nil, alpha: Component? = nil, colorspace: Colorspace? = nil) {
-		id = UUID()
 		self.red = red ?? EditableColor.defaultValues.red
 		self.green = green ?? EditableColor.defaultValues.green
 		self.blue = blue ?? EditableColor.defaultValues.blue
 		self.alpha = alpha ?? EditableColor.defaultValues.alpha
 		self.colorspace = colorspace ?? EditableColor.defaultValues.colorspace
-		super.init()
 	}
 	
 	
