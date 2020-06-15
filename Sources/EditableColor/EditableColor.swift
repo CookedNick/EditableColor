@@ -45,7 +45,7 @@ public struct EditableColor: Equatable, Hashable {
 	
 	
 	/// Default values for `Color`'s initializer. You can edit this.
-	public static var defaultValues = EditableColor()
+	public static var defaultValues = EditableColor(red: 1, green: 1, blue: 1, alpha: 1, colorspace: .sRGB)
 	
 	
 	public enum Colorspace: String {
